@@ -1,5 +1,5 @@
 @extends('_template_back.layout')
-
+<title>Data Buku</title>
 @section('content')
 
 		<!-- breadcrumb -->
@@ -21,15 +21,14 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div class="d-flex justify-content-between">
-                            <h4 class="card-title mg-b-2 mt-2">DATA-BUKU</h4>
+                        <div class="d-flex justify-content-between">            
                             <a href="{{ route('buku.create')}}" class="btn btn-primary">Tambah Data</a>
-                            <i class="mdi mdi-dots-horizontal text-gray"></i>
                         </div>
+                        @include('_component.pesan') 
                     </div>
                     <div class="card-body mt-3">
                         <div class="table-responsive">
-                            <table class="table mg-b-0 text-md-nowrap">
+                            <table class="table table-bordered table-hover table-striped mg-b-0 text-md-nowrap">
                                 <thead>
                                     <tr>
                                     <th width="20px">No</th>
@@ -49,9 +48,13 @@
                                         <td style="text-align:center">{{ $dt->penerbit}}</td>
                                         <td style="text-align:center">{{ $dt->tahun_terbit}}</td>
                                         <td>
-                                            //
+                                            <a href="{{ route('buku.edit', $dt->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                            <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini')" action="{{ route('buku.destroy', $dt->id) }}" method="post" class="d-inline">
+                                            @csrf @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
                                         </td>
-                                    </tr>
+                                    </tr>   
                                     @endforeach
                                 </tbody>
                             </table>
