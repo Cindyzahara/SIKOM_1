@@ -21,8 +21,9 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div class="d-flex justify-content-between">            
+                        <div class="d-flex my-auto btn-list justify-content-end">            
                             <a href="{{ route('buku.create')}}" class="btn btn-primary">Tambah Data</a>
+                            <a href="{{ route('export_pdf_buku') }}" class="btn btn-danger">Export PDF</a>
                         </div>
                         @include('_component.pesan') 
                     </div>
