@@ -23,7 +23,13 @@
                     <div class="card-header pb-0">
                         <div class="d-flex my-auto btn-list justify-content-end">            
                             <a href="{{ route('buku.create')}}" class="btn btn-primary">Tambah Data</a>
+                            {{-- @if (auth()->user()->role == 'petugas') --}}
+                            <a href="{{ route('export_excel_buku')}}" class="btn btn-success">Export Excel</a>
                             <a href="{{ route('export_pdf_buku') }}" class="btn btn-danger">Export PDF</a>
+                            {{-- @elseif (auth()->user()->role == 'administrator') --}}
+                            <a href="{{ route('export_pdf_buku') }}" class="btn btn-danger">Export PDF</a>
+                            {{-- @endif --}}
+                            <a class="modal-effect btn btn-dark" data-bs-effect="effect-rotate-bottom" data-bs-toggle="modal" href="#modaldemo8">Import Excel</a>
                         </div>
                         @include('_component.pesan') 
                     </div>
@@ -48,14 +54,14 @@
                                         <td style="text-align:center">{{ $dt->penulis}}</td>
                                         <td style="text-align:center">{{ $dt->penerbit}}</td>
                                         <td style="text-align:center">{{ $dt->tahun_terbit}}</td>
-                                        <td>
-                                            <a href="{{ route('buku.edit', $dt->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                       <td>
+                                            <a href="{{ route('buku.edit', $dt->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
                                             <form onsubmit="return confirm('Apakah anda yakin ingin menghapus data ini')" action="{{ route('buku.destroy', $dt->id) }}" method="post" class="d-inline">
                                             @csrf @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-sm btn-danger" ><i class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
-                                    </tr>   
+                                    </tr>    
                                     @endforeach
                                 </tbody>
                             </table>
@@ -65,5 +71,7 @@
             </div>
             <!--/div-->
 
+            {{-- untuk menguhubungkan index dengan modal import --}}
+            @include('data_buku.modal_import')
     
 @endsection

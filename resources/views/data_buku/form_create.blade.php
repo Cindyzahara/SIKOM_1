@@ -64,7 +64,7 @@
                                     <button type="submit" class="float-right btn btn-primary pd-x-30 mg-e-5 mg-t-5">
                                         <i class='fa fa-save'></i> Simpan</button>
                                     <a href="{{ route('buku.index')}}" class="btn btn-secondary pd-x-30 mg-t-5">
-                                        <i class='fa fa-chevron-left'></i> Kembali</a>
+                                        <i class='fa fa-che	vron-left'></i> Kembali</a>
                                     </form>
 								</div>
 							</div>

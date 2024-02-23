@@ -27,3 +27,10 @@ Route::post('/auth', [LoginController::class, 'auth'])->name('auth');
 // ROUTE CRUD BUKU
 Route::Resource('buku', BukuController::class)->middleware('auth');
 Route::get('export_pdf_buku', [BukuController::class, 'export_pdf'])->name('export_pdf_buku');
+Route::get('/export_excel_buku', [BukuController::class, 'export_excel'])->name('export_excel_buku');
+Route::post('/import_excel_buku', [BukuController::class, 'import_excel'])->name('import_excel_buku');
+
+// ROUTE CRUD KATEGORI BUKU
+Route::Resource('kategori_buku', BukuController::class)->middleware('auth');
+
+// ->middleware('role:petugas')

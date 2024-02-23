@@ -57,7 +57,8 @@
                             <div class="dropdown-menu">
                                 <div class="main-header-profile header-img">
                                     <div class="main-img-user"><img alt="" src="{{ asset('assets')}}/img/faces/6.jpg"></div>
-                                    <h6>Petey Cruiser</h6><span>Premium Member</span>
+                                    <h6>@auth {{ auth()->user()->username }} @endauth</h6>
+                                    <span>@auth {{ auth()->user()->role }} @endauth</span>
                                 </div>
                                 <a class="dropdown-item" href="{{ route('logout') }}"><i class="fas fa-sign-out-alt"></i> Sign Out</a>
                             </div>
